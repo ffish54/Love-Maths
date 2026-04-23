@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     for (let button of buttons) {
         button.addEventListener("click", function() {
             if (this.getAttribute("data-type") === "submit") {
-                alert("You clicked submit!");
+                checkAnswer();
             } else {
                 let gameType = this.getAttribute("data-type");
                 alert(`You clicked ${gameType}`);
@@ -32,8 +32,25 @@ function runGame(gameType) {
     }
     
 }
-
+/**
+ * Checks the answer against the first operand, operator, and second operand that are displayed. Then it displays the correct answer and increments the score for correct or incorrect answers.
+ */
 function checkAnswer() {
+
+    let userAnswer = parseInt(document.getElementById("answer-box").value);
+    let calculatedAnswer = calculateCorrectAnswer();    
+    let isCorrect = userAnswer === calculatedAnswer[0];
+
+    if (isCorrect) {
+        alert("Hey! You got it right! :D");
+        incrementScore();
+    }    else {
+        alert(`Awww... you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`);
+        incrementWrongAnswer();
+    }
+
+        runGame(calculatedAnswer[1]);
+
     
 }   
 /**
