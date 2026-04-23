@@ -70,11 +70,18 @@ function calculateCorrectAnswer() {
 
 }
 
+/**
+ * Gets the operands and operator directly from the DOM and returns the correct answer.
+ */
 function incrementScore() {
+    let oldScore = parseInt(document.getElementById("score").textContent);
+    document.getElementById("score").textContent = ++oldScore;
     
 }
 
 function incrementWrongAnswer() {
+    let oldScore = parseInt(document.getElementById("incorrect").textContent);
+    document.getElementById("incorrect").textContent = ++oldScore;
     
 }
 
