@@ -36,7 +36,7 @@ function runGame(gameType) {
 function checkAnswer() {
 
     let userAnswer = parseInt(document.getElementById("answer-box").value);
-    let calculatedAnswer = calculateCorrectAnswer();    
+    let calculatedAnswer = calculateCorrectAnswer();
     let isCorrect = userAnswer === calculatedAnswer[0];
 
     if (isCorrect) {
@@ -54,12 +54,13 @@ function checkAnswer() {
  * Calculates the correct answer according to the displayed operands and operator.
  */
 function calculateCorrectAnswer() {
-    let operand1 = parseInt(document.getElementById("operand1").textContent);
-    let operand2 = parseInt(document.getElementById("operand2").textContent);
-    let operator = document.getElementById("operator").textContent;
+
+    let operand1 = parseInt(document.getElementById('operand1').innerText);
+    let operand2 = parseInt(document.getElementById('operand2').innerText);
+    let operator = document.getElementById("operator").innerText;
 
     if (operator === "+") {
-        return operand1 + operand2;
+        return [operand1 + operand2, "addition"];
     } else {
         alert(`Unimplemented operator ${operator}`);
         throw `Unimplemented operator ${operator}. Aborting!`;
@@ -70,19 +71,19 @@ function calculateCorrectAnswer() {
  * Gets the operands and operator directly from the DOM and returns the correct answer.
  */
 function incrementScore() {
-    let oldScore = parseInt(document.getElementById("score").textContent);
-    document.getElementById("score").textContent = ++oldScore;
+    let oldScore = parseInt(document.getElementById("score").innerText);
+    document.getElementById("score").innerText = ++oldScore;
 }
 
 function incrementWrongAnswer() {
-    let oldScore = parseInt(document.getElementById("incorrect").textContent);
-    document.getElementById("incorrect").textContent = ++oldScore;
+    let oldScore = parseInt(document.getElementById("incorrect").innerText);
+    document.getElementById("incorrect").innerText = ++oldScore;
 }
 
 function displayAdditionQuestion(operand1, operand2) {
-    document.getElementById("operand1").textContent = operand1;
-    document.getElementById("operand2").textContent = operand2;
-    document.getElementById("operator").textContent = "+";
+    document.getElementById("operand1").innerText = operand1;
+    document.getElementById("operand2").innerText = operand2;
+    document.getElementById("operator").innerText = "+";
 }
 
 function displaySubtractQuestion(operand1, operand2) {     
